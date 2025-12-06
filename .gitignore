@@ -1,0 +1,39 @@
+# Node dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+
+# Vite local cache
+.vite/
+
+# Logs
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor settings
+.vscode/
+.idea/
+*.swp
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# TypeScript cache (if using)
+*.tsbuildinfo
+
+# SvelteKit but safe for SPA too
+.svelte-kit/
+
