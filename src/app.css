@@ -1,9 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* @theme {
+  --color-bg-dark: #0E0E1B;
+  --color-bg-light: #252541;
+  --color-text-light-primary: #FFE0AD;
+  --color-text-light-secondary: #FBE8DA;
+  --color-accent-one: #52FFB8;
+  --color-accent-two: #b085ff;
+  --color-accent-three: #FA9F42;
+  --color-accent-four: #DA4167;
+} */
 
-/* small container */
-.container {
-  max-width: 900px;
+@layer base {
+  html, body {
+    @apply bg-dark;
+    overscroll-behavior: none;
+    height: 100%;
+  }
+}
+
+@theme {
+  --font-sans: "Space Mono", monospace; 
+  --color-darkest: #141415;
+  --color-dark: #1D1E1F;
+  --color-dark-light: #28282A;
+  --color-lightest: #D9C5B2;
+  --color-light: #FBE8DA;
+  --color-accent-grey: #78787D;
+  --color-accent-green: #71B340;
+  --color-accent-orange: #FFC857;
+  --color-accent-blue: #92DCE5;
+  --color-accent-red: #F25F5C;
 }

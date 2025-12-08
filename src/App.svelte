@@ -1,45 +1,84 @@
-
 <script>
-  let year = new Date().getFullYear();
+  import { currentRoute, navigate } from "./lib/router.js";
+  import { onMount } from "svelte";
+
+  import PublicationsSection from "./sections/PublicationsSection.svelte";
+  import AboutSection from "./sections/AboutSection.svelte";
+  import MiscSection from "./sections/MiscSection.svelte";
+
+  // Routing
+  let route = $state($currentRoute);
+  $effect(() => {
+    route = $currentRoute;
+  });
 </script>
 
-<nav class="border-b py-4">
-  <div class="container mx-auto px-4 flex items-center gap-4">
-    <a href="/" class="font-semibold text-lg">Your Name</a>
-    <div class="flex-1"></div>
-    <a href="#research" class="text-sm">Research</a>
-    <a href="#publications" class="ml-4 text-sm">Publications</a>
-    <a href="#contact" class="ml-4 text-sm">Contact</a>
-  </div>
-</nav>
+<!-- Page background -->
+<div class="min-h-screen bg-dark flex flex-col font-sans">
 
-<main class="container mx-auto px-4 py-8">
-  <section id="intro" class="mb-8">
-    <h1 class="text-3xl font-bold mb-2">Your Name</h1>
-    <p class="text-lg text-gray-700">Short description: researcher, field, affiliation.</p>
-  </section>
+  <!-- Header -->
+  <header class="w-full flex justify-center py-4 bg-dark sticky top-0 z-20 border-b-2 border-darkest">
+    <div class="w-5/6 flex items-center justify-between">
 
-  <section id="research" class="mb-8">
-    <h2 class="text-2xl font-semibold mb-2">Research</h2>
-    <p>Brief summary of research interests.</p>
-  </section>
+      <h1 class="py-2 text-3xl tracking-widest text-lightest border-b">
+        Axel Roques.
+      </h1>
 
-  <section id="publications" class="mb-8">
-    <h2 class="text-2xl font-semibold mb-4">Publications</h2>
-    <ul class="space-y-2">
-      <li>Paper A — <em>venue</em>, 2024</li>
-      <li>Paper B — <em>venue</em>, 2023</li>
-    </ul>
-  </section>
+      <nav class="flex space-evenly space-x-4 text-light">
+        <button
+          onclick={() => navigate("/about")}
+          class="border-b border-transparent hover:border-lightest hover:text-lightest hover:cursor-pointer
+            { route === '/about' ? 'text-lightest !border-lightest' : '' }"
+         >About
+        </button>
+        <button
+          onclick={() => navigate("/publications")}
+          class="border-b border-transparent hover:border-lightest hover:text-lightest hover:cursor-pointer
+            { route === '/publications' ? 'text-lightest !border-lightest' : '' }"
+          >Publications
+        </button>
+        <button
+          onclick={() => navigate("/misc")}
+          class="border-b border-transparent hover:border-lightest hover:text-lightest hover:cursor-pointer
+            { route === '/misc' ? 'text-lightest !border-lightest' : '' }"
+          >Misc.
+        </button>
+      </nav>
 
-  <section id="contact" class="mb-12">
-    <h2 class="text-2xl font-semibold mb-2">Contact</h2>
-    <p><a href="mailto:you@example.com" class="underline">you@example.com</a></p>
-  </section>
-</main>
+    </div>
+  </header>
 
-<footer class="border-t py-4">
-  <div class="container mx-auto px-4 text-sm text-gray-600">
-    © {year} Your Name — <a href="/cv.pdf" class="underline">CV</a>
-  </div>
-</footer>
+  <!-- Sections -->
+  <main class="flex flex-col justify-center items-center flex-grow">
+    {#if route === "/about"}
+      <AboutSection />
+    {:else if route === "/publications"}
+      <PublicationsSection />
+    {:else if route === "/misc"}
+      <MiscSection />
+    {:else}
+      <AboutSection /> <!-- fallback -->
+    {/if}
+  </main>
+
+  
+  <!-- <main class="flex-grow flex items-center justify-center px-4 py-10">
+    <div class="max-w-2xl w-full p-8 border-2 border-darkest rounded-lg bg-dark-light shadow-lg text-text-dark-secondary">
+      <h2 class="text-2xl font-medium text-lightest mb-4">
+        Welcome
+      </h2>
+      <p class="leading-relaxed text-light">
+        This is a test content box to verify the layout, typography, and
+        color palette.
+      </p>
+
+      <div class="mt-6 space-x-4 flex">
+        <p class="text-accent-green">Accent Green</p>
+        <p class="text-accent-orange">Accent Orange</p>
+        <p class="text-accent-blue">Accent Blue</p>
+        <p class="text-accent-red">Accent Red</p>
+      </div>
+    </div>
+  </main> -->
+
+</div>
