@@ -4,7 +4,7 @@
 
   import PublicationsSection from "./sections/PublicationsSection.svelte";
   import AboutSection from "./sections/AboutSection.svelte";
-  import MiscSection from "./sections/MiscSection.svelte";
+  import ResourcesSection from "./sections/ResourcesSection.svelte";
 
   // Routing
   let route = $state($currentRoute);
@@ -38,10 +38,10 @@
           >Publications
         </button>
         <button
-          onclick={() => navigate("/misc")}
+          onclick={() => navigate("/resources")}
           class="border-b border-transparent hover:border-lightest hover:text-lightest hover:cursor-pointer
-            { route === '/misc' ? 'text-lightest !border-lightest' : '' }"
-          >Misc.
+            { route === '/resources' ? 'text-lightest !border-lightest' : '' }"
+          >Resources
         </button>
       </nav>
 
@@ -54,8 +54,8 @@
       <AboutSection />
     {:else if route === "/publications"}
       <PublicationsSection />
-    {:else if route === "/misc"}
-      <MiscSection />
+    {:else if route === "/resources"}
+      <ResourcesSection />
     {:else}
       <AboutSection /> <!-- fallback -->
     {/if}
