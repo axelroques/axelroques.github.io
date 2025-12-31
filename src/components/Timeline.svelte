@@ -55,8 +55,3 @@
     </Experience>
     </div>
 </div>
-
-    <!-- <p class="text-light text-sm mb-2">{experiences[selectedIndex].institution}</p>
-    <p class="text-accent-grey italic mb-2">{experiences[selectedIndex].year}</p>
-    <p class="text-light">{experiences[selectedIndex].description}</p>
-</div> -->
